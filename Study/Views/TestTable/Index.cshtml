@@ -1,0 +1,38 @@
+﻿
+@{
+	ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/player/cyberplayer.js"></script>
+<script src="~/Scripts/player/PlayerJs.js"></script>
+<script src="~/Scripts/player/aes.js"></script>
+
+
+<div id="playercontainer"></div>
+<input type="button" value="showvideo" onclick="showvideo('@ViewBag.VideoUrl')" />
+
+
+
+<div>
+	<label>用户名：</label><input type="text" name="userId" id="userId" />
+	<label>密码：</label><input type="text" name="passWord" id="passWord" />
+	<label><input type="button" value="加密" onclick="EncryptTest()" /> </label>
+	<label><input type="button" value="解密" onclick="DecryptTest()" /> </label>
+</div>
+
+<script type="text/javascript">
+
+	function EncryptTest() {
+		$("#userId").val(Encrypt(document.getElementById("userId").value, key))
+		$("#passWord").val(Encrypt(document.getElementById("passWord").value, key))
+	}
+
+	function DecryptTest() {
+
+		$("#userId").val(Decrypt(document.getElementById("userId").value, key))
+		$("#passWord").val(Decrypt(document.getElementById("passWord").value, key))
+	}
+</script>

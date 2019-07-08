@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F7069139-14F9-4B50-8FBC-ADD73C2C3126}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Study.Data</RootNamespace>
+    <AssemblyName>Study.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="c_agent.cs">
+      <DependentUpon>StudyEduDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="c_agent_detail.cs">
+      <DependentUpon>StudyEduDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="c_collection.cs">
+      <DependentUpon>StudyEduDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="c_course.cs">
+      <DependentUpon>StudyEduDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="c_course_selected.cs">
+      <DependentUpon>StudyEduDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="c_course_sort.cs">
+      <DependentUpon>StudyEduDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="c_log_sms.cs">
+      <DependentUpon>StudyEduDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="c_member.cs">
+      <DependentUpon>StudyEduDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="c_member_login.cs">
+      <DependentUpon>StudyEduDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="c_payment.cs">
+      <DependentUpon>StudyEduDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataOperation.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StudyEduDbContext.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudyEduDbContext.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StudyEduDbContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudyEduDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StudyEduDbContext.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudyEduDbContext.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="t_course_detail.cs">
+      <DependentUpon>StudyEduDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_dictionary.cs">
+      <DependentUpon>StudyEduDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_map.cs">
+      <DependentUpon>StudyEduDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_news.cs">
+      <DependentUpon>StudyEduDbContext.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="StudyEduDbContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>StudyEduDbContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+    <None Include="StudyEduDbContext.edmx.diagram">
+      <DependentUpon>StudyEduDbContext.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="StudyEduDbContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>StudyEduDbContext.Context.cs</LastGenOutput>
+      <DependentUpon>StudyEduDbContext.edmx</DependentUpon>
+    </Content>
+    <Content Include="StudyEduDbContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StudyEduDbContext.edmx</DependentUpon>
+      <LastGenOutput>StudyEduDbContext.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

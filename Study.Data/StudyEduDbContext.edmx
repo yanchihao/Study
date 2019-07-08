@@ -1,0 +1,861 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="StudyEduModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="c_agent">
+          <Key>
+            <PropertyRef Name="c_agent_id" />
+          </Key>
+          <Property Name="c_id" Type="int" Nullable="false" />
+          <Property Name="c_agent_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="c_login_tel" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="c_login_password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="c_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="c_gender" Type="tinyint" Nullable="false" />
+          <Property Name="c_address" Type="nvarchar" MaxLength="215" />
+          <Property Name="c_desc" Type="nvarchar" MaxLength="516" />
+          <Property Name="c_recomender" Type="varchar" MaxLength="215" />
+          <Property Name="c_db_create_date" Type="date" Nullable="false" />
+          <Property Name="c_db_create_id" Type="int" Nullable="false" />
+          <Property Name="c_db_last_update_date" Type="date" Nullable="false" />
+          <Property Name="c_db_last_update_id" Type="int" Nullable="false" />
+          <Property Name="c_db_status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="c_agent_detail">
+          <Key>
+            <PropertyRef Name="c_agent_detail_id" />
+          </Key>
+          <Property Name="c_id" Type="int" Nullable="false" />
+          <Property Name="c_agent_detail_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="c_member_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="c_card_type" Type="int" />
+          <Property Name="c_agent_cost" Type="int" />
+          <Property Name="c_take_out" Type="int" />
+          <Property Name="c_cashwithdrawal_date" Type="date" />
+          <Property Name="c_db_create_date" Type="date" Nullable="false" />
+          <Property Name="c_db_create_id" Type="int" Nullable="false" />
+          <Property Name="c_db_last_update_date" Type="date" Nullable="false" />
+          <Property Name="c_db_last_update_id" Type="int" Nullable="false" />
+          <Property Name="c_db_status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="c_collection">
+          <Key>
+            <PropertyRef Name="c_collection_id" />
+          </Key>
+          <Property Name="c_id" Type="int" Nullable="false" />
+          <Property Name="c_collection_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="c_member_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="c_course_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="c_db_create_date" Type="date" Nullable="false" />
+          <Property Name="c_db_create_id" Type="int" Nullable="false" />
+          <Property Name="c_db_last_update_date" Type="date" Nullable="false" />
+          <Property Name="c_db_last_update_id" Type="int" Nullable="false" />
+          <Property Name="c_db_status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="c_course">
+          <Key>
+            <PropertyRef Name="c_course_id" />
+          </Key>
+          <Property Name="c_id" Type="int" Nullable="false" />
+          <Property Name="c_course_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="c_sort_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="c_name" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="c_type" Type="int" />
+          <Property Name="c_is_recommend" Type="tinyint" />
+          <Property Name="c_db_create_date" Type="date" Nullable="false" />
+          <Property Name="c_db_create_id" Type="int" Nullable="false" />
+          <Property Name="c_db_last_update_date" Type="date" Nullable="false" />
+          <Property Name="c_db_last_update_id" Type="int" Nullable="false" />
+          <Property Name="c_db_status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="c_course_selected">
+          <Key>
+            <PropertyRef Name="c_course_selected_id" />
+          </Key>
+          <Property Name="c_id" Type="int" Nullable="false" />
+          <Property Name="c_course_selected_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="c_course_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="c_member_id" Type="uniqueidentifier" />
+          <Property Name="c_db_create_date" Type="date" Nullable="false" />
+          <Property Name="c_db_create_id" Type="int" Nullable="false" />
+          <Property Name="c_db_last_update_date" Type="date" Nullable="false" />
+          <Property Name="c_db_last_update_id" Type="int" Nullable="false" />
+          <Property Name="c_db_status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="c_course_sort">
+          <Key>
+            <PropertyRef Name="c_sort_id" />
+          </Key>
+          <Property Name="c_id" Type="int" Nullable="false" />
+          <Property Name="c_sort_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="parent_id" Type="int" Nullable="false" />
+          <Property Name="class_name" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="c_img" Type="varchar" MaxLength="516" />
+          <Property Name="describe" Type="varchar" MaxLength="516" />
+          <Property Name="sort" Type="int" Nullable="false" />
+          <Property Name="c_db_create_date" Type="date" Nullable="false" />
+          <Property Name="c_db_create_id" Type="int" Nullable="false" />
+          <Property Name="c_db_last_update_date" Type="date" Nullable="false" />
+          <Property Name="c_db_last_update_id" Type="int" Nullable="false" />
+          <Property Name="c_db_status" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'StudyEdu.dbo.c_log_sms' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="c_log_sms">
+          <Key>
+            <PropertyRef Name="c_sms_id" />
+          </Key>
+          <Property Name="c_sms_id" Type="int" Nullable="false" />
+          <Property Name="c_sms_type" Type="nvarchar" MaxLength="1000" />
+          <Property Name="c_sms_userid" Type="nvarchar" MaxLength="1000" />
+          <Property Name="c_sms_msg" Type="nvarchar" MaxLength="1000" />
+          <Property Name="c_sms_phone" Type="nvarchar" MaxLength="1000" />
+          <Property Name="c_sms_return_code" Type="nvarchar" MaxLength="1000" />
+          <Property Name="c_sms_code" Type="nvarchar" MaxLength="1000" />
+          <Property Name="c_sms_func" Type="nvarchar" MaxLength="1000" />
+          <Property Name="c_sms_ip" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="c_member">
+          <Key>
+            <PropertyRef Name="c_member_id" />
+          </Key>
+          <Property Name="c_id" Type="int" Nullable="false" />
+          <Property Name="c_member_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="c_login_name" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="c_login_password" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="c_gender" Type="tinyint" Nullable="false" />
+          <Property Name="c_custom_type" Type="int" Nullable="false" />
+          <Property Name="c_tel_num" Type="varchar" MaxLength="256" />
+          <Property Name="c_email" Type="varchar" MaxLength="256" />
+          <Property Name="c_provice_id" Type="int" />
+          <Property Name="c_city_id" Type="int" />
+          <Property Name="c_area_id" Type="int" />
+          <Property Name="c_address" Type="nvarchar" MaxLength="256" />
+          <Property Name="c_head_phone" Type="varchar" MaxLength="516" />
+          <Property Name="c_valid_date" Type="date" Nullable="false" />
+          <Property Name="c_learb_day" Type="int" />
+          <Property Name="c_refereer" Type="uniqueidentifier" />
+          <Property Name="c_reset_date" Type="date" />
+          <Property Name="c_activation_date" Type="date" />
+          <Property Name="c_db_create_date" Type="date" Nullable="false" />
+          <Property Name="c_db_create_id" Type="int" Nullable="false" />
+          <Property Name="c_db_last_update_date" Type="date" Nullable="false" />
+          <Property Name="c_db_last_update_id" Type="int" Nullable="false" />
+          <Property Name="c_db_status" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'StudyEdu.dbo.c_member_login' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="c_member_login">
+          <Key>
+            <PropertyRef Name="c_id" />
+            <PropertyRef Name="c_member_id" />
+            <PropertyRef Name="c_login_date" />
+            <PropertyRef Name="c_login_status" />
+            <PropertyRef Name="c_login_ip" />
+            <PropertyRef Name="c_login_src" />
+          </Key>
+          <Property Name="c_id" Type="int" Nullable="false" />
+          <Property Name="c_member_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="c_login_date" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="c_login_status" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="c_login_ip" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="c_login_src" Type="nvarchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="c_payment">
+          <Key>
+            <PropertyRef Name="c_payment_id" />
+          </Key>
+          <Property Name="c_id" Type="int" Nullable="false" />
+          <Property Name="c_payment_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="c_payment_way" Type="int" Nullable="false" />
+          <Property Name="c_payment_amount" Type="money" Nullable="false" />
+          <Property Name="c_transaction_number" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="c_serial_number" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="c_member_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="c_payment_date" Type="date" Nullable="false" />
+          <Property Name="c_order_number" Type="varchar" MaxLength="256" />
+          <Property Name="c_db_create_date" Type="date" Nullable="false" />
+          <Property Name="c_db_create_id" Type="int" Nullable="false" />
+          <Property Name="c_db_last_update_date" Type="date" Nullable="false" />
+          <Property Name="c_db_last_update_id" Type="int" Nullable="false" />
+          <Property Name="c_db_status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_course_detail">
+          <Key>
+            <PropertyRef Name="c_guid_id" />
+          </Key>
+          <Property Name="c_id" Type="int" Nullable="false" />
+          <Property Name="c_guid_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="c_course_id" Type="uniqueidentifier" />
+          <Property Name="c_titile" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="c_main_speak" Type="nvarchar" MaxLength="50" />
+          <Property Name="c_type" Type="int" />
+          <Property Name="c_country" Type="uniqueidentifier" />
+          <Property Name="c_area" Type="uniqueidentifier" />
+          <Property Name="c_language" Type="uniqueidentifier" />
+          <Property Name="c_info" Type="nvarchar" MaxLength="100" />
+          <Property Name="c_small_pic" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="c_big_pic" Type="varchar" MaxLength="1000" />
+          <Property Name="c_db_create_date" Type="date" Nullable="false" />
+          <Property Name="c_db_create_id" Type="int" Nullable="false" />
+          <Property Name="c_db_last_update_date" Type="date" Nullable="false" />
+          <Property Name="c_db_last_update_id" Type="int" Nullable="false" />
+          <Property Name="c_db_status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_dictionary">
+          <Key>
+            <PropertyRef Name="c_guid_id" />
+          </Key>
+          <Property Name="c_id" Type="int" />
+          <Property Name="c_guid_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="c_namespace_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="c_code" Type="varchar" MaxLength="256" />
+          <Property Name="c_name" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="c_desc" Type="varchar" MaxLength="516" />
+          <Property Name="c_sort" Type="int" Nullable="false" />
+          <Property Name="c_db_create_date" Type="date" Nullable="false" />
+          <Property Name="c_db_create_id" Type="int" Nullable="false" />
+          <Property Name="c_db_last_update_date" Type="date" Nullable="false" />
+          <Property Name="c_db_last_update_id" Type="int" Nullable="false" />
+          <Property Name="c_db_status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_map">
+          <Key>
+            <PropertyRef Name="c_guid_id" />
+          </Key>
+          <Property Name="c_id" Type="int" Nullable="false" />
+          <Property Name="c_guid_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="c_parent_id" Type="int" />
+          <Property Name="c_code" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="c_name" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="c_desc" Type="varchar" MaxLength="256" />
+          <Property Name="c_type" Type="int" Nullable="false" />
+          <Property Name="c_sort" Type="int" Nullable="false" />
+          <Property Name="c_db_create_date" Type="date" Nullable="false" />
+          <Property Name="c_db_create_id" Type="int" Nullable="false" />
+          <Property Name="c_db_last_update_date" Type="date" Nullable="false" />
+          <Property Name="c_db_last_update_id" Type="int" Nullable="false" />
+          <Property Name="c_db_status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_news">
+          <Key>
+            <PropertyRef Name="c_new_id" />
+          </Key>
+          <Property Name="c_id" Type="int" Nullable="false" />
+          <Property Name="c_new_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="c_title" Type="nvarchar" MaxLength="200" />
+          <Property Name="c_content" Type="text" />
+          <Property Name="c_desc" Type="varchar" MaxLength="516" />
+          <Property Name="c_author" Type="varchar" MaxLength="100" />
+          <Property Name="c_browse" Type="int" />
+          <Property Name="c_source" Type="nvarchar" MaxLength="50" />
+          <Property Name="c_type" Type="int" />
+          <Property Name="c_sort" Type="int" />
+          <Property Name="c_db_create_date" Type="date" Nullable="false" />
+          <Property Name="c_db_create_id" Type="int" Nullable="false" />
+          <Property Name="c_db_last_update_date" Type="date" Nullable="false" />
+          <Property Name="c_db_last_update_id" Type="int" Nullable="false" />
+          <Property Name="c_db_status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="StudyEduModelStoreContainer">
+          <EntitySet Name="c_agent" EntityType="Self.c_agent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="c_agent_detail" EntityType="Self.c_agent_detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="c_collection" EntityType="Self.c_collection" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="c_course" EntityType="Self.c_course" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="c_course_selected" EntityType="Self.c_course_selected" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="c_course_sort" EntityType="Self.c_course_sort" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="c_member" EntityType="Self.c_member" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="c_payment" EntityType="Self.c_payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_course_detail" EntityType="Self.t_course_detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_dictionary" EntityType="Self.t_dictionary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_map" EntityType="Self.t_map" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_news" EntityType="Self.t_news" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="c_log_sms" EntityType="Self.c_log_sms" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [c_log_sms].[c_sms_id] AS [c_sms_id], 
+    [c_log_sms].[c_sms_type] AS [c_sms_type], 
+    [c_log_sms].[c_sms_userid] AS [c_sms_userid], 
+    [c_log_sms].[c_sms_msg] AS [c_sms_msg], 
+    [c_log_sms].[c_sms_phone] AS [c_sms_phone], 
+    [c_log_sms].[c_sms_return_code] AS [c_sms_return_code], 
+    [c_log_sms].[c_sms_code] AS [c_sms_code], 
+    [c_log_sms].[c_sms_func] AS [c_sms_func], 
+    [c_log_sms].[c_sms_ip] AS [c_sms_ip]
+    FROM [dbo].[c_log_sms] AS [c_log_sms]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="c_member_login" EntityType="Self.c_member_login" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [c_member_login].[c_id] AS [c_id], 
+    [c_member_login].[c_member_id] AS [c_member_id], 
+    [c_member_login].[c_login_date] AS [c_login_date], 
+    [c_member_login].[c_login_status] AS [c_login_status], 
+    [c_member_login].[c_login_ip] AS [c_login_ip], 
+    [c_member_login].[c_login_src] AS [c_login_src]
+    FROM [dbo].[c_member_login] AS [c_member_login]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StudyEduModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="c_agent">
+          <Key>
+            <PropertyRef Name="c_agent_id" />
+          </Key>
+          <Property Name="c_id" Type="Int32" Nullable="false" />
+          <Property Name="c_agent_id" Type="Guid" Nullable="false" />
+          <Property Name="c_login_tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_login_password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_gender" Type="Byte" Nullable="false" />
+          <Property Name="c_address" Type="String" MaxLength="215" FixedLength="false" Unicode="true" />
+          <Property Name="c_desc" Type="String" MaxLength="516" FixedLength="false" Unicode="true" />
+          <Property Name="c_recomender" Type="String" MaxLength="215" FixedLength="false" Unicode="false" />
+          <Property Name="c_db_create_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="c_db_create_id" Type="Int32" Nullable="false" />
+          <Property Name="c_db_last_update_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="c_db_last_update_id" Type="Int32" Nullable="false" />
+          <Property Name="c_db_status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="c_agent_detail">
+          <Key>
+            <PropertyRef Name="c_agent_detail_id" />
+          </Key>
+          <Property Name="c_id" Type="Int32" Nullable="false" />
+          <Property Name="c_agent_detail_id" Type="Guid" Nullable="false" />
+          <Property Name="c_member_id" Type="Guid" Nullable="false" />
+          <Property Name="c_card_type" Type="Int32" />
+          <Property Name="c_agent_cost" Type="Int32" />
+          <Property Name="c_take_out" Type="Int32" />
+          <Property Name="c_cashwithdrawal_date" Type="DateTime" Precision="0" />
+          <Property Name="c_db_create_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="c_db_create_id" Type="Int32" Nullable="false" />
+          <Property Name="c_db_last_update_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="c_db_last_update_id" Type="Int32" Nullable="false" />
+          <Property Name="c_db_status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="c_collection">
+          <Key>
+            <PropertyRef Name="c_collection_id" />
+          </Key>
+          <Property Name="c_id" Type="Int32" Nullable="false" />
+          <Property Name="c_collection_id" Type="Guid" Nullable="false" />
+          <Property Name="c_member_id" Type="Guid" Nullable="false" />
+          <Property Name="c_course_id" Type="Guid" Nullable="false" />
+          <Property Name="c_db_create_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="c_db_create_id" Type="Int32" Nullable="false" />
+          <Property Name="c_db_last_update_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="c_db_last_update_id" Type="Int32" Nullable="false" />
+          <Property Name="c_db_status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="c_course">
+          <Key>
+            <PropertyRef Name="c_course_id" />
+          </Key>
+          <Property Name="c_id" Type="Int32" Nullable="false" />
+          <Property Name="c_course_id" Type="Guid" Nullable="false" />
+          <Property Name="c_sort_id" Type="Guid" Nullable="false" />
+          <Property Name="c_name" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="c_type" Type="Int32" />
+          <Property Name="c_is_recommend" Type="Byte" />
+          <Property Name="c_db_create_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="c_db_create_id" Type="Int32" Nullable="false" />
+          <Property Name="c_db_last_update_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="c_db_last_update_id" Type="Int32" Nullable="false" />
+          <Property Name="c_db_status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="c_course_selected">
+          <Key>
+            <PropertyRef Name="c_course_selected_id" />
+          </Key>
+          <Property Name="c_id" Type="Int32" Nullable="false" />
+          <Property Name="c_course_selected_id" Type="Guid" Nullable="false" />
+          <Property Name="c_course_id" Type="Guid" Nullable="false" />
+          <Property Name="c_member_id" Type="Guid" />
+          <Property Name="c_db_create_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="c_db_create_id" Type="Int32" Nullable="false" />
+          <Property Name="c_db_last_update_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="c_db_last_update_id" Type="Int32" Nullable="false" />
+          <Property Name="c_db_status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="c_course_sort">
+          <Key>
+            <PropertyRef Name="c_sort_id" />
+          </Key>
+          <Property Name="c_id" Type="Int32" Nullable="false" />
+          <Property Name="c_sort_id" Type="Guid" Nullable="false" />
+          <Property Name="parent_id" Type="Int32" Nullable="false" />
+          <Property Name="class_name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="c_img" Type="String" MaxLength="516" FixedLength="false" Unicode="false" />
+          <Property Name="describe" Type="String" MaxLength="516" FixedLength="false" Unicode="false" />
+          <Property Name="sort" Type="Int32" Nullable="false" />
+          <Property Name="c_db_create_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="c_db_create_id" Type="Int32" Nullable="false" />
+          <Property Name="c_db_last_update_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="c_db_last_update_id" Type="Int32" Nullable="false" />
+          <Property Name="c_db_status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="c_member">
+          <Key>
+            <PropertyRef Name="c_member_id" />
+          </Key>
+          <Property Name="c_id" Type="Int32" Nullable="false" />
+          <Property Name="c_member_id" Type="Guid" Nullable="false" />
+          <Property Name="c_login_name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_login_password" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_gender" Type="Byte" Nullable="false" />
+          <Property Name="c_custom_type" Type="Int32" Nullable="false" />
+          <Property Name="c_tel_num" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="c_email" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="c_provice_id" Type="Int32" />
+          <Property Name="c_city_id" Type="Int32" />
+          <Property Name="c_area_id" Type="Int32" />
+          <Property Name="c_address" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="c_head_phone" Type="String" MaxLength="516" FixedLength="false" Unicode="false" />
+          <Property Name="c_valid_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="c_learb_day" Type="Int32" />
+          <Property Name="c_refereer" Type="Guid" />
+          <Property Name="c_reset_date" Type="DateTime" Precision="0" />
+          <Property Name="c_activation_date" Type="DateTime" Precision="0" />
+          <Property Name="c_db_create_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="c_db_create_id" Type="Int32" Nullable="false" />
+          <Property Name="c_db_last_update_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="c_db_last_update_id" Type="Int32" Nullable="false" />
+          <Property Name="c_db_status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="c_payment">
+          <Key>
+            <PropertyRef Name="c_payment_id" />
+          </Key>
+          <Property Name="c_id" Type="Int32" Nullable="false" />
+          <Property Name="c_payment_id" Type="Guid" Nullable="false" />
+          <Property Name="c_payment_way" Type="Int32" Nullable="false" />
+          <Property Name="c_payment_amount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="c_transaction_number" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="c_serial_number" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="c_member_id" Type="Guid" Nullable="false" />
+          <Property Name="c_payment_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="c_order_number" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="c_db_create_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="c_db_create_id" Type="Int32" Nullable="false" />
+          <Property Name="c_db_last_update_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="c_db_last_update_id" Type="Int32" Nullable="false" />
+          <Property Name="c_db_status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_course_detail">
+          <Key>
+            <PropertyRef Name="c_guid_id" />
+          </Key>
+          <Property Name="c_id" Type="Int32" Nullable="false" />
+          <Property Name="c_guid_id" Type="Guid" Nullable="false" />
+          <Property Name="c_course_id" Type="Guid" />
+          <Property Name="c_titile" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="c_main_speak" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="c_type" Type="Int32" />
+          <Property Name="c_country" Type="Guid" />
+          <Property Name="c_area" Type="Guid" />
+          <Property Name="c_language" Type="Guid" />
+          <Property Name="c_info" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="c_small_pic" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="c_big_pic" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="c_db_create_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="c_db_create_id" Type="Int32" Nullable="false" />
+          <Property Name="c_db_last_update_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="c_db_last_update_id" Type="Int32" Nullable="false" />
+          <Property Name="c_db_status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_dictionary">
+          <Key>
+            <PropertyRef Name="c_guid_id" />
+          </Key>
+          <Property Name="c_id" Type="Int32" />
+          <Property Name="c_guid_id" Type="Guid" Nullable="false" />
+          <Property Name="c_namespace_id" Type="Guid" Nullable="false" />
+          <Property Name="c_code" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="c_name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="c_desc" Type="String" MaxLength="516" FixedLength="false" Unicode="false" />
+          <Property Name="c_sort" Type="Int32" Nullable="false" />
+          <Property Name="c_db_create_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="c_db_create_id" Type="Int32" Nullable="false" />
+          <Property Name="c_db_last_update_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="c_db_last_update_id" Type="Int32" Nullable="false" />
+          <Property Name="c_db_status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_map">
+          <Key>
+            <PropertyRef Name="c_guid_id" />
+          </Key>
+          <Property Name="c_id" Type="Int32" Nullable="false" />
+          <Property Name="c_guid_id" Type="Guid" Nullable="false" />
+          <Property Name="c_parent_id" Type="Int32" />
+          <Property Name="c_code" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="c_name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="c_desc" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="c_type" Type="Int32" Nullable="false" />
+          <Property Name="c_sort" Type="Int32" Nullable="false" />
+          <Property Name="c_db_create_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="c_db_create_id" Type="Int32" Nullable="false" />
+          <Property Name="c_db_last_update_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="c_db_last_update_id" Type="Int32" Nullable="false" />
+          <Property Name="c_db_status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_news">
+          <Key>
+            <PropertyRef Name="c_new_id" />
+          </Key>
+          <Property Name="c_id" Type="Int32" Nullable="false" />
+          <Property Name="c_new_id" Type="Guid" Nullable="false" />
+          <Property Name="c_title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="c_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="c_desc" Type="String" MaxLength="516" FixedLength="false" Unicode="false" />
+          <Property Name="c_author" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="c_browse" Type="Int32" />
+          <Property Name="c_source" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="c_type" Type="Int32" />
+          <Property Name="c_sort" Type="Int32" />
+          <Property Name="c_db_create_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="c_db_create_id" Type="Int32" Nullable="false" />
+          <Property Name="c_db_last_update_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="c_db_last_update_id" Type="Int32" Nullable="false" />
+          <Property Name="c_db_status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="c_log_sms">
+          <Key>
+            <PropertyRef Name="c_sms_id" />
+          </Key>
+          <Property Name="c_sms_id" Type="Int32" Nullable="false" />
+          <Property Name="c_sms_type" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="c_sms_userid" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="c_sms_msg" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="c_sms_phone" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="c_sms_return_code" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="c_sms_code" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="c_sms_func" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="c_sms_ip" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="c_member_login">
+          <Key>
+            <PropertyRef Name="c_id" />
+            <PropertyRef Name="c_member_id" />
+            <PropertyRef Name="c_login_date" />
+            <PropertyRef Name="c_login_status" />
+            <PropertyRef Name="c_login_ip" />
+            <PropertyRef Name="c_login_src" />
+          </Key>
+          <Property Name="c_id" Type="Int32" Nullable="false" />
+          <Property Name="c_member_id" Type="Guid" Nullable="false" />
+          <Property Name="c_login_date" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_login_status" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_login_ip" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_login_src" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="StudyEduEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="c_agent" EntityType="Self.c_agent" />
+          <EntitySet Name="c_agent_detail" EntityType="Self.c_agent_detail" />
+          <EntitySet Name="c_collection" EntityType="Self.c_collection" />
+          <EntitySet Name="c_course" EntityType="Self.c_course" />
+          <EntitySet Name="c_course_selected" EntityType="Self.c_course_selected" />
+          <EntitySet Name="c_course_sort" EntityType="Self.c_course_sort" />
+          <EntitySet Name="c_member" EntityType="Self.c_member" />
+          <EntitySet Name="c_payment" EntityType="Self.c_payment" />
+          <EntitySet Name="t_course_detail" EntityType="Self.t_course_detail" />
+          <EntitySet Name="t_dictionary" EntityType="Self.t_dictionary" />
+          <EntitySet Name="t_map" EntityType="Self.t_map" />
+          <EntitySet Name="t_news" EntityType="Self.t_news" />
+          <EntitySet Name="c_log_sms" EntityType="Self.c_log_sms" />
+          <EntitySet Name="c_member_login" EntityType="Self.c_member_login" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="StudyEduModelStoreContainer" CdmEntityContainer="StudyEduEntities">
+          <EntitySetMapping Name="c_agent">
+            <EntityTypeMapping TypeName="StudyEduModel.c_agent">
+              <MappingFragment StoreEntitySet="c_agent">
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="c_agent_id" ColumnName="c_agent_id" />
+                <ScalarProperty Name="c_login_tel" ColumnName="c_login_tel" />
+                <ScalarProperty Name="c_login_password" ColumnName="c_login_password" />
+                <ScalarProperty Name="c_name" ColumnName="c_name" />
+                <ScalarProperty Name="c_gender" ColumnName="c_gender" />
+                <ScalarProperty Name="c_address" ColumnName="c_address" />
+                <ScalarProperty Name="c_desc" ColumnName="c_desc" />
+                <ScalarProperty Name="c_recomender" ColumnName="c_recomender" />
+                <ScalarProperty Name="c_db_create_date" ColumnName="c_db_create_date" />
+                <ScalarProperty Name="c_db_create_id" ColumnName="c_db_create_id" />
+                <ScalarProperty Name="c_db_last_update_date" ColumnName="c_db_last_update_date" />
+                <ScalarProperty Name="c_db_last_update_id" ColumnName="c_db_last_update_id" />
+                <ScalarProperty Name="c_db_status" ColumnName="c_db_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="c_agent_detail">
+            <EntityTypeMapping TypeName="StudyEduModel.c_agent_detail">
+              <MappingFragment StoreEntitySet="c_agent_detail">
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="c_agent_detail_id" ColumnName="c_agent_detail_id" />
+                <ScalarProperty Name="c_member_id" ColumnName="c_member_id" />
+                <ScalarProperty Name="c_card_type" ColumnName="c_card_type" />
+                <ScalarProperty Name="c_agent_cost" ColumnName="c_agent_cost" />
+                <ScalarProperty Name="c_take_out" ColumnName="c_take_out" />
+                <ScalarProperty Name="c_cashwithdrawal_date" ColumnName="c_cashwithdrawal_date" />
+                <ScalarProperty Name="c_db_create_date" ColumnName="c_db_create_date" />
+                <ScalarProperty Name="c_db_create_id" ColumnName="c_db_create_id" />
+                <ScalarProperty Name="c_db_last_update_date" ColumnName="c_db_last_update_date" />
+                <ScalarProperty Name="c_db_last_update_id" ColumnName="c_db_last_update_id" />
+                <ScalarProperty Name="c_db_status" ColumnName="c_db_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="c_collection">
+            <EntityTypeMapping TypeName="StudyEduModel.c_collection">
+              <MappingFragment StoreEntitySet="c_collection">
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="c_collection_id" ColumnName="c_collection_id" />
+                <ScalarProperty Name="c_member_id" ColumnName="c_member_id" />
+                <ScalarProperty Name="c_course_id" ColumnName="c_course_id" />
+                <ScalarProperty Name="c_db_create_date" ColumnName="c_db_create_date" />
+                <ScalarProperty Name="c_db_create_id" ColumnName="c_db_create_id" />
+                <ScalarProperty Name="c_db_last_update_date" ColumnName="c_db_last_update_date" />
+                <ScalarProperty Name="c_db_last_update_id" ColumnName="c_db_last_update_id" />
+                <ScalarProperty Name="c_db_status" ColumnName="c_db_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="c_course">
+            <EntityTypeMapping TypeName="StudyEduModel.c_course">
+              <MappingFragment StoreEntitySet="c_course">
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="c_course_id" ColumnName="c_course_id" />
+                <ScalarProperty Name="c_sort_id" ColumnName="c_sort_id" />
+                <ScalarProperty Name="c_name" ColumnName="c_name" />
+                <ScalarProperty Name="c_type" ColumnName="c_type" />
+                <ScalarProperty Name="c_is_recommend" ColumnName="c_is_recommend" />
+                <ScalarProperty Name="c_db_create_date" ColumnName="c_db_create_date" />
+                <ScalarProperty Name="c_db_create_id" ColumnName="c_db_create_id" />
+                <ScalarProperty Name="c_db_last_update_date" ColumnName="c_db_last_update_date" />
+                <ScalarProperty Name="c_db_last_update_id" ColumnName="c_db_last_update_id" />
+                <ScalarProperty Name="c_db_status" ColumnName="c_db_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="c_course_selected">
+            <EntityTypeMapping TypeName="StudyEduModel.c_course_selected">
+              <MappingFragment StoreEntitySet="c_course_selected">
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="c_course_selected_id" ColumnName="c_course_selected_id" />
+                <ScalarProperty Name="c_course_id" ColumnName="c_course_id" />
+                <ScalarProperty Name="c_member_id" ColumnName="c_member_id" />
+                <ScalarProperty Name="c_db_create_date" ColumnName="c_db_create_date" />
+                <ScalarProperty Name="c_db_create_id" ColumnName="c_db_create_id" />
+                <ScalarProperty Name="c_db_last_update_date" ColumnName="c_db_last_update_date" />
+                <ScalarProperty Name="c_db_last_update_id" ColumnName="c_db_last_update_id" />
+                <ScalarProperty Name="c_db_status" ColumnName="c_db_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="c_course_sort">
+            <EntityTypeMapping TypeName="StudyEduModel.c_course_sort">
+              <MappingFragment StoreEntitySet="c_course_sort">
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="c_sort_id" ColumnName="c_sort_id" />
+                <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+                <ScalarProperty Name="class_name" ColumnName="class_name" />
+                <ScalarProperty Name="c_img" ColumnName="c_img" />
+                <ScalarProperty Name="describe" ColumnName="describe" />
+                <ScalarProperty Name="sort" ColumnName="sort" />
+                <ScalarProperty Name="c_db_create_date" ColumnName="c_db_create_date" />
+                <ScalarProperty Name="c_db_create_id" ColumnName="c_db_create_id" />
+                <ScalarProperty Name="c_db_last_update_date" ColumnName="c_db_last_update_date" />
+                <ScalarProperty Name="c_db_last_update_id" ColumnName="c_db_last_update_id" />
+                <ScalarProperty Name="c_db_status" ColumnName="c_db_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="c_member">
+            <EntityTypeMapping TypeName="StudyEduModel.c_member">
+              <MappingFragment StoreEntitySet="c_member">
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="c_member_id" ColumnName="c_member_id" />
+                <ScalarProperty Name="c_login_name" ColumnName="c_login_name" />
+                <ScalarProperty Name="c_login_password" ColumnName="c_login_password" />
+                <ScalarProperty Name="c_gender" ColumnName="c_gender" />
+                <ScalarProperty Name="c_custom_type" ColumnName="c_custom_type" />
+                <ScalarProperty Name="c_tel_num" ColumnName="c_tel_num" />
+                <ScalarProperty Name="c_email" ColumnName="c_email" />
+                <ScalarProperty Name="c_provice_id" ColumnName="c_provice_id" />
+                <ScalarProperty Name="c_city_id" ColumnName="c_city_id" />
+                <ScalarProperty Name="c_area_id" ColumnName="c_area_id" />
+                <ScalarProperty Name="c_address" ColumnName="c_address" />
+                <ScalarProperty Name="c_head_phone" ColumnName="c_head_phone" />
+                <ScalarProperty Name="c_valid_date" ColumnName="c_valid_date" />
+                <ScalarProperty Name="c_learb_day" ColumnName="c_learb_day" />
+                <ScalarProperty Name="c_refereer" ColumnName="c_refereer" />
+                <ScalarProperty Name="c_reset_date" ColumnName="c_reset_date" />
+                <ScalarProperty Name="c_activation_date" ColumnName="c_activation_date" />
+                <ScalarProperty Name="c_db_create_date" ColumnName="c_db_create_date" />
+                <ScalarProperty Name="c_db_create_id" ColumnName="c_db_create_id" />
+                <ScalarProperty Name="c_db_last_update_date" ColumnName="c_db_last_update_date" />
+                <ScalarProperty Name="c_db_last_update_id" ColumnName="c_db_last_update_id" />
+                <ScalarProperty Name="c_db_status" ColumnName="c_db_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="c_payment">
+            <EntityTypeMapping TypeName="StudyEduModel.c_payment">
+              <MappingFragment StoreEntitySet="c_payment">
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="c_payment_id" ColumnName="c_payment_id" />
+                <ScalarProperty Name="c_payment_way" ColumnName="c_payment_way" />
+                <ScalarProperty Name="c_payment_amount" ColumnName="c_payment_amount" />
+                <ScalarProperty Name="c_transaction_number" ColumnName="c_transaction_number" />
+                <ScalarProperty Name="c_serial_number" ColumnName="c_serial_number" />
+                <ScalarProperty Name="c_member_id" ColumnName="c_member_id" />
+                <ScalarProperty Name="c_payment_date" ColumnName="c_payment_date" />
+                <ScalarProperty Name="c_order_number" ColumnName="c_order_number" />
+                <ScalarProperty Name="c_db_create_date" ColumnName="c_db_create_date" />
+                <ScalarProperty Name="c_db_create_id" ColumnName="c_db_create_id" />
+                <ScalarProperty Name="c_db_last_update_date" ColumnName="c_db_last_update_date" />
+                <ScalarProperty Name="c_db_last_update_id" ColumnName="c_db_last_update_id" />
+                <ScalarProperty Name="c_db_status" ColumnName="c_db_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_course_detail">
+            <EntityTypeMapping TypeName="StudyEduModel.t_course_detail">
+              <MappingFragment StoreEntitySet="t_course_detail">
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="c_guid_id" ColumnName="c_guid_id" />
+                <ScalarProperty Name="c_course_id" ColumnName="c_course_id" />
+                <ScalarProperty Name="c_titile" ColumnName="c_titile" />
+                <ScalarProperty Name="c_main_speak" ColumnName="c_main_speak" />
+                <ScalarProperty Name="c_type" ColumnName="c_type" />
+                <ScalarProperty Name="c_country" ColumnName="c_country" />
+                <ScalarProperty Name="c_area" ColumnName="c_area" />
+                <ScalarProperty Name="c_language" ColumnName="c_language" />
+                <ScalarProperty Name="c_info" ColumnName="c_info" />
+                <ScalarProperty Name="c_small_pic" ColumnName="c_small_pic" />
+                <ScalarProperty Name="c_big_pic" ColumnName="c_big_pic" />
+                <ScalarProperty Name="c_db_create_date" ColumnName="c_db_create_date" />
+                <ScalarProperty Name="c_db_create_id" ColumnName="c_db_create_id" />
+                <ScalarProperty Name="c_db_last_update_date" ColumnName="c_db_last_update_date" />
+                <ScalarProperty Name="c_db_last_update_id" ColumnName="c_db_last_update_id" />
+                <ScalarProperty Name="c_db_status" ColumnName="c_db_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_dictionary">
+            <EntityTypeMapping TypeName="StudyEduModel.t_dictionary">
+              <MappingFragment StoreEntitySet="t_dictionary">
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="c_guid_id" ColumnName="c_guid_id" />
+                <ScalarProperty Name="c_namespace_id" ColumnName="c_namespace_id" />
+                <ScalarProperty Name="c_code" ColumnName="c_code" />
+                <ScalarProperty Name="c_name" ColumnName="c_name" />
+                <ScalarProperty Name="c_desc" ColumnName="c_desc" />
+                <ScalarProperty Name="c_sort" ColumnName="c_sort" />
+                <ScalarProperty Name="c_db_create_date" ColumnName="c_db_create_date" />
+                <ScalarProperty Name="c_db_create_id" ColumnName="c_db_create_id" />
+                <ScalarProperty Name="c_db_last_update_date" ColumnName="c_db_last_update_date" />
+                <ScalarProperty Name="c_db_last_update_id" ColumnName="c_db_last_update_id" />
+                <ScalarProperty Name="c_db_status" ColumnName="c_db_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_map">
+            <EntityTypeMapping TypeName="StudyEduModel.t_map">
+              <MappingFragment StoreEntitySet="t_map">
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="c_guid_id" ColumnName="c_guid_id" />
+                <ScalarProperty Name="c_parent_id" ColumnName="c_parent_id" />
+                <ScalarProperty Name="c_code" ColumnName="c_code" />
+                <ScalarProperty Name="c_name" ColumnName="c_name" />
+                <ScalarProperty Name="c_desc" ColumnName="c_desc" />
+                <ScalarProperty Name="c_type" ColumnName="c_type" />
+                <ScalarProperty Name="c_sort" ColumnName="c_sort" />
+                <ScalarProperty Name="c_db_create_date" ColumnName="c_db_create_date" />
+                <ScalarProperty Name="c_db_create_id" ColumnName="c_db_create_id" />
+                <ScalarProperty Name="c_db_last_update_date" ColumnName="c_db_last_update_date" />
+                <ScalarProperty Name="c_db_last_update_id" ColumnName="c_db_last_update_id" />
+                <ScalarProperty Name="c_db_status" ColumnName="c_db_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_news">
+            <EntityTypeMapping TypeName="StudyEduModel.t_news">
+              <MappingFragment StoreEntitySet="t_news">
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="c_new_id" ColumnName="c_new_id" />
+                <ScalarProperty Name="c_title" ColumnName="c_title" />
+                <ScalarProperty Name="c_content" ColumnName="c_content" />
+                <ScalarProperty Name="c_desc" ColumnName="c_desc" />
+                <ScalarProperty Name="c_author" ColumnName="c_author" />
+                <ScalarProperty Name="c_browse" ColumnName="c_browse" />
+                <ScalarProperty Name="c_source" ColumnName="c_source" />
+                <ScalarProperty Name="c_type" ColumnName="c_type" />
+                <ScalarProperty Name="c_sort" ColumnName="c_sort" />
+                <ScalarProperty Name="c_db_create_date" ColumnName="c_db_create_date" />
+                <ScalarProperty Name="c_db_create_id" ColumnName="c_db_create_id" />
+                <ScalarProperty Name="c_db_last_update_date" ColumnName="c_db_last_update_date" />
+                <ScalarProperty Name="c_db_last_update_id" ColumnName="c_db_last_update_id" />
+                <ScalarProperty Name="c_db_status" ColumnName="c_db_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="c_log_sms">
+            <EntityTypeMapping TypeName="StudyEduModel.c_log_sms">
+              <MappingFragment StoreEntitySet="c_log_sms">
+                <ScalarProperty Name="c_sms_id" ColumnName="c_sms_id" />
+                <ScalarProperty Name="c_sms_type" ColumnName="c_sms_type" />
+                <ScalarProperty Name="c_sms_userid" ColumnName="c_sms_userid" />
+                <ScalarProperty Name="c_sms_msg" ColumnName="c_sms_msg" />
+                <ScalarProperty Name="c_sms_phone" ColumnName="c_sms_phone" />
+                <ScalarProperty Name="c_sms_return_code" ColumnName="c_sms_return_code" />
+                <ScalarProperty Name="c_sms_code" ColumnName="c_sms_code" />
+                <ScalarProperty Name="c_sms_func" ColumnName="c_sms_func" />
+                <ScalarProperty Name="c_sms_ip" ColumnName="c_sms_ip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="c_member_login">
+            <EntityTypeMapping TypeName="StudyEduModel.c_member_login">
+              <MappingFragment StoreEntitySet="c_member_login">
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="c_member_id" ColumnName="c_member_id" />
+                <ScalarProperty Name="c_login_date" ColumnName="c_login_date" />
+                <ScalarProperty Name="c_login_status" ColumnName="c_login_status" />
+                <ScalarProperty Name="c_login_ip" ColumnName="c_login_ip" />
+                <ScalarProperty Name="c_login_src" ColumnName="c_login_src" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
